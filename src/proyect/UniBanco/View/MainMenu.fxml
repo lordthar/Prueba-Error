@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyect.UniBanco.Controllers.MainMenuController">
+   <children>
+      <Label layoutX="208.0" layoutY="14.0" text="Bienvenido A UniBanco" textFill="RED">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <TableView layoutX="386.0" layoutY="75.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label layoutX="408.0" layoutY="52.0" text="La Lista De Tus Transacciones" />
+      <TextField layoutX="108.0" layoutY="81.0" />
+      <TextField layoutX="108.0" layoutY="150.0" />
+   </children>
+</AnchorPane>

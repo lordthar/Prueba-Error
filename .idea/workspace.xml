@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7b516c18-31c3-457b-a02d-ef847c791911" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniBanco.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Aplicacion/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Controllers/CrearCuentaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Controllers/LoginClienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Controllers/MainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Exceptions/ClienteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Exceptions/CuentaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Exceptions/LoginException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Exceptions/TransaccionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Model/Banco.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Model/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Model/Cuenta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Model/Estado_Transaccion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Model/Tipo_Cuenta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Model/Tipo_Transaccion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/Model/Transaccion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/View/CrearCuenta.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/View/LoginCliente.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proyect/UniBanco/View/MainMenu.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LcatHxmSyVebpTYK5nyziEscEU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/Users/PCSHOP-COL/Desktop/trabajo final - santiago",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\PCSHOP-COL\Desktop\UniBanco - Proyect\UniBanco\src\proyect\UniBanco\View" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="proyect.UniBanco.Aplicacion.Main" />
+      <module name="UniBanco" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-19.0.2.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b516c18-31c3-457b-a02d-ef847c791911" name="Changes" comment="" />
+      <created>1676173039513</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676173039513</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
