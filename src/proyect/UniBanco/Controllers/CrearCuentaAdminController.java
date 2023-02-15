@@ -1,5 +1,7 @@
 package proyect.UniBanco.Controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -13,13 +15,14 @@ import proyect.UniBanco.Model.Tipo_Cuenta;
 
 import java.io.IOException;
 
-public class CrearCuentaController {
+public class CrearCuentaAdminController {
 
+    ObservableList<Cliente>listaClientesData = FXCollections.observableArrayList();
     @FXML
     private Button btnCrear;
 
     @FXML
-    private Button btnRegresar;
+    private Button btnCerrarSesion;
 
     @FXML
     private TextField txtApellidoCliente;
@@ -42,11 +45,29 @@ public class CrearCuentaController {
     @FXML
     private TextField txtSaldo;
 
+    @FXML
+    private TableColumn<Cliente, String> columnApellido;
+
+    @FXML
+    private TableColumn<Cliente, String > columnCedula;
+
+    @FXML
+    private TableColumn<Cliente, String> columnNombre;
+
+    @FXML
+    private TableColumn<Cliente, Integer> columnNumeroCuenta;
+
+    @FXML
+    private TableColumn<Cuenta, Tipo_Cuenta> columnTipoCuenta;
+
+    @FXML
+    private TableView<Cliente> tableClienteCuenta;
+
     private Main main;
 
     @FXML
-    void Regresar(ActionEvent event) throws IOException {
-        main.mostrarLogin();
+    void cerrarSesion(ActionEvent event) throws IOException {
+        main.mostrarMainWindow();
     }
 
     @FXML
@@ -179,28 +200,9 @@ public class CrearCuentaController {
         alert.setTitle(titulo);
         alert.setHeaderText(header);
         alert.setContentText(contenido);
-        DialogPane dialogPane = alert.getDialogPane();
         alert.showAndWait();
     }
 
-    private boolean verificarCampos(String name, String apellidos, String direccion, String cedula, String numeroCuenta) {
-        if(name.equals("")){
-            return false;
-        }
-        if(apellidos.equals("")){
-            return false;
-        }
-        if(direccion.equals("")){
-            return false;
-        }
-        if(numeroCuenta.equals("")){
-            return false;
-        }
-        if(cedula.equals("")){
-            return false;
-        }
-        return true;
-    }
     public void setMain(Main main) {
         this.main = main;
     }

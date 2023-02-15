@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="420.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyect.UniBanco.Controllers.CrearCuentaController">
+<AnchorPane prefHeight="420.0" prefWidth="683.0" style="-fx-background-color: #F8C471;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyect.UniBanco.Controllers.CrearCuentaAdminController">
    <children>
-      <Separator layoutX="329.0" layoutY="46.0" orientation="VERTICAL" prefHeight="289.0" prefWidth="15.0" />
-      <Label layoutX="241.0" layoutY="14.0" text="Registra Tu Cuenta" textFill="#e10808">
+      <Separator layoutX="340.0" layoutY="46.0" orientation="VERTICAL" prefHeight="284.0" prefWidth="15.0" />
+      <Label layoutX="245.0" layoutY="14.0" text="Registra la Cuenta Del Cliente " textFill="#e10808">
          <font>
-            <Font name="Candara Light" size="22.0" />
+            <Font name="Candara Light Italic" size="22.0" />
          </font>
       </Label>
       <Label layoutX="114.0" layoutY="61.0" text="Datos Del Cliente">
@@ -31,18 +31,18 @@
       <TextField fx:id="txtCedula" layoutX="114.0" layoutY="179.0" onAction="#obtenerCedula" />
       <TextField fx:id="txtDireccionCliente" layoutX="114.0" layoutY="219.0" onAction="#obtenerDireccion" />
       <TextField fx:id="txtEmailCliente" layoutX="114.0" layoutY="255.0" onAction="#obtenerEmail" />
-      <Label layoutX="450.0" layoutY="63.0" text="Datos De Cuenta">
+      <Label layoutX="491.0" layoutY="61.0" text="Datos De Cuenta">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="110.0" text="Numero De cuenta:" />
-      <Label layoutX="385.0" layoutY="223.0" text="Tipo Cuenta:" />
-      <Label layoutX="402.0" layoutY="159.0" text="Saldo:" />
-      <TextField fx:id="txtNombreCuenta" layoutX="467.0" layoutY="106.0" onAction="#obtenerNombreCuenta" />
-      <TextField fx:id="txtSaldo" layoutX="467.0" layoutY="155.0" onAction="#obtenerSaldo" />
-      <Button fx:id="btnRegresar" layoutX="227.0" layoutY="358.0" mnemonicParsing="false" onAction="#Regresar" text="Regresar" />
-      <Button fx:id="btnCrear" layoutX="373.0" layoutY="358.0" mnemonicParsing="false" onAction="#crearCuenta" text="Crear" />
-      <ChoiceBox fx:id="tipoCuentaBox" layoutX="467.0" layoutY="219.0" prefWidth="150.0" />
+      <Label layoutX="381.0" layoutY="119.0" text="Numero De cuenta:" />
+      <Label layoutX="400.0" layoutY="223.0" text="Tipo Cuenta:" />
+      <Label layoutX="417.0" layoutY="171.0" text="Saldo:" />
+      <TextField fx:id="txtNombreCuenta" layoutX="507.0" layoutY="119.0" onAction="#obtenerNombreCuenta" />
+      <TextField fx:id="txtSaldo" layoutX="507.0" layoutY="167.0" onAction="#obtenerSaldo" />
+      <Button fx:id="btnCerrarSesion" layoutX="184.0" layoutY="358.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
+      <Button fx:id="btnCrear" layoutX="378.0" layoutY="358.0" mnemonicParsing="false" onAction="#crearCuenta" text="Crear" />
+      <ChoiceBox fx:id="tipoCuentaBox" layoutX="506.0" layoutY="219.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

@@ -5,15 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import proyect.UniBanco.Controllers.CrearCuentaController;
-import proyect.UniBanco.Controllers.LoginClienteController;
-import proyect.UniBanco.Controllers.MainMenuController;
+import proyect.UniBanco.Controllers.*;
 import proyect.UniBanco.Exceptions.ClienteException;
 import proyect.UniBanco.Exceptions.CuentaException;
-import proyect.UniBanco.Model.Banco;
-import proyect.UniBanco.Model.Cliente;
-import proyect.UniBanco.Model.Cuenta;
-import proyect.UniBanco.Model.Tipo_Cuenta;
+import proyect.UniBanco.Model.*;
 
 
 import java.io.IOException;
@@ -28,10 +23,47 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
             this.stage=stage;
-            mostrarLogin();
+            mostrarMainWindow();
     }
 
-    public void mostrarLogin() {
+
+    public void mostrarMainWindow()  {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../View/MainWindow.fxml"));
+            AnchorPane rootLayout = loader.load();
+            MainWindowController controller = loader.getController();
+            controller.setMain(this);
+            Scene scene = new Scene(rootLayout);
+            stage.setScene(scene);
+            stage.setTitle("Somo exe");
+            stage.show();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void mostrarLoginAdmin(){
+        try{
+            //cargamos el FXML
+            FXMLLoader loader = new FXMLLoader();
+            //Direccion del FXML
+            loader.setLocation(Main.class.getResource("../View/LoginAdmin.fxml"));
+            AnchorPane rootlayout = loader.load();
+            LoginAdminController controller= loader.getController();
+            controller.setMain(this);
+            //Inicializa las Scenes
+            Scene scene = new Scene(rootlayout);
+            stage.setScene(scene);
+            stage.setTitle("eresdfas");
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void mostrarLoginCliente() {
         try{
             //cargamos el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -51,13 +83,13 @@ public class Main extends Application {
         }
     }
 
-    public void crearcuenta() {
+    public void crearcuentaAdmin(Administrador admin) {
         try{
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../View/CrearCuenta.fxml"));
+            loader.setLocation(Main.class.getResource("../View/CrearCuentaAdmin.fxml"));
             AnchorPane rootLayout = loader.load();
             Scene scene = new Scene(rootLayout);
-            CrearCuentaController controller = loader.getController();
+            CrearCuentaAdminController controller = loader.getController();
             controller.setMain(this);
             stage.setScene(scene);
             stage.setTitle("Dovha");
@@ -94,13 +126,16 @@ public class Main extends Application {
     public boolean crearCliente(String nombre, String apellido, String cedula, String direccion, String email, Cuenta cuenta) throws ClienteException {
            return banco.crearCliente( nombre, apellido, cedula, direccion, email, cuenta);
     }
-
     public Cliente obtenerCliente(String cedula) throws ClienteException {
         return banco.buscarCliente(cedula);
     }
-
-
     public Cuenta buscarCuenta(String numeroCuenta) throws CuentaException {
             return banco.buscarCuenta(numeroCuenta);
+    }
+    public boolean verificarCuentaAdmin (String user, String passWord){
+        return banco.verificarLoginAdmin(user, passWord);
+    }
+    public Administrador obtenerAdmin (String user, String passWord){
+        return banco.obtenerAdministrador(user, passWord);
     }
 }

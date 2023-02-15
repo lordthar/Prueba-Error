@@ -18,6 +18,8 @@ public class LoginClienteController {
         private Main main;
 
         @FXML
+        private Button btnVolverAlMain;
+        @FXML
         private Button btnCrearCuenta;
 
         @FXML
@@ -28,6 +30,11 @@ public class LoginClienteController {
 
         @FXML
         private TextField txtNumeroCuenta;
+
+        @FXML
+        void VolverAlMain(ActionEvent event) {
+                main.mostrarMainWindow();
+        }
 
         @FXML
         void IniciarSesion(ActionEvent event) throws IOException, ClienteException {
@@ -75,7 +82,6 @@ public class LoginClienteController {
         }
 
         private void crearCuentaAction() {
-                main.crearcuenta();
         }
 
         @FXML

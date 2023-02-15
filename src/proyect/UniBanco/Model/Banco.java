@@ -1,14 +1,33 @@
 package proyect.UniBanco.Model;
 
+import java.sql.Array;
 import java.util.ArrayList;
+
+import proyect.UniBanco.Exceptions.AdminException;
 import proyect.UniBanco.Exceptions.ClienteException;
 import proyect.UniBanco.Exceptions.CuentaException;
 
 public class Banco {
     private String nombre;
     private String nit;
-    private ArrayList<Cliente> listaClientes = new ArrayList<>();
-    private ArrayList<Cuenta> listaCuentas = new ArrayList<>();
+    private ArrayList<Cliente> listaClientes;
+    private ArrayList<Cuenta> listaCuentas;
+
+    private ArrayList<Administrador> listaAdmins;
+
+    private void inicializarAdmin(){
+        CuentaAcceso cuentaAcceso = new CuentaAcceso();
+        cuentaAcceso.setUser("2");
+        cuentaAcceso.setPassWord("2");
+
+        Administrador admin = new Administrador();
+        admin.setCedula("213443");
+        admin.setApellido("etesech");
+        admin.setNombre("no llego tilin");
+        admin.setCuentaAcceso(cuentaAcceso);
+        listaAdmins.add(admin);
+
+    }
 
     private void inicializar(){
         Cuenta cuenta = new Cuenta();
@@ -30,13 +49,16 @@ public class Banco {
     public Banco(String nombre, String nit) {
         this.nombre = nombre;
         this.nit = nit;
-        this.listaClientes = listaClientes;
-        this.listaCuentas = listaCuentas;
-        inicializar();
+        this.listaClientes = new ArrayList<>();
+        this.listaCuentas = new ArrayList<>();
+        this.listaAdmins = new ArrayList<>();
+        inicializarAdmin();
     }
 
     public Banco() {
     }
+
+
 
     public String getNombre() {
         return nombre;
@@ -52,6 +74,14 @@ public class Banco {
 
     public void setNit(String nit) {
         this.nit = nit;
+    }
+
+    public ArrayList<Administrador> getListaAdmins() {
+        return listaAdmins;
+    }
+
+    public void setListaAdmins(ArrayList<Administrador> listaAdmins) {
+        this.listaAdmins = listaAdmins;
     }
 
     public ArrayList<Cliente> getlistaClientes() {
@@ -70,7 +100,7 @@ public class Banco {
         this.listaCuentas = listaCuentas;
     }
 
-    //Crud a utilizar
+    //Crud a Cliente
 
     public boolean crearCliente(String nombre, String apellido, String cedula, String direccion, String email, Cuenta cuenta) throws ClienteException {
         Cliente cliente = new Cliente();
@@ -221,6 +251,56 @@ public class Banco {
         }
         return false;
     }
+
+    //CRUD Administrador
+    public boolean crearAdmin(String nombre, String apellido , String cedula) throws AdminException {
+        Administrador admin = new Administrador();
+        admin.setNombre(nombre);
+        admin.setApellido(apellido);
+        admin.setCedula(cedula);
+        if(existeAdmin(cedula)){
+            throw new AdminException("Admin creado");
+        }
+        getListaAdmins().add(admin);
+        return false;
+    }
+
+    private boolean existeAdmin(String cedula) {
+        for (Administrador admin : listaAdmins) {
+            if(admin.getCedula().equals(cedula))
+                return true;
+        }
+        return false;
+    }
+    public Administrador obtenerAdministrador(String user, String password) {
+        Administrador administradorEncontrado = null;
+        for (Administrador administrador:listaAdmins) {
+            if (administrador.verificarCuentaAdmin(user, password)){
+                administradorEncontrado = administrador;
+                break;
+            }
+        }
+        return administradorEncontrado;
+    }
+
+    public boolean crearCuentaAdmin(String user, String passWord){
+        CuentaAcceso cuentaAcceso = new CuentaAcceso();
+        cuentaAcceso.setUser(user);
+        cuentaAcceso.setPassWord(passWord);
+        return true;
+    }
+
+    public Boolean verificarLoginAdmin( String user, String passWord) {
+        for (Administrador admin : listaAdmins) {
+            if (admin.verificarCuentaAdmin(user,passWord)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 
 }
 
