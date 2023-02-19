@@ -8,20 +8,16 @@ import java.util.Date;
 public class Cuenta {
     private String numeroCuenta;
     private double saldo;
-
     private Tipo_Cuenta tipoCuenta;
     private ArrayList<Transaccion> listaTransacciones;
-
     public Cuenta(String numeroCuenta, double saldo, Tipo_Cuenta tipoCuenta) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
         this.tipoCuenta = tipoCuenta;
         listaTransacciones = new ArrayList<>();
     }
-
     public Cuenta() {
     }
-
     public Tipo_Cuenta getTipoCuenta() {
         return tipoCuenta;
     }
@@ -37,7 +33,6 @@ public class Cuenta {
     public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
-
     public double getSaldo() {
         return saldo;
     }
@@ -53,7 +48,6 @@ public class Cuenta {
     public void setListaTransacciones(ArrayList<Transaccion> listaTransacciones) {
         this.listaTransacciones = listaTransacciones;
     }
-
     public boolean crearTransaccion(int registroValor, Date fecha, String hora) throws TransaccionException {
             Transaccion transaccion = new Transaccion();
             transaccion.setRegistroValor(registroValor);

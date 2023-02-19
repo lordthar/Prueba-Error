@@ -12,9 +12,7 @@ public class Banco {
     private String nit;
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Cuenta> listaCuentas;
-
     private ArrayList<Administrador> listaAdmins;
-
     private void inicializarAdmin(){
         CuentaAcceso cuentaAcceso = new CuentaAcceso();
         cuentaAcceso.setUser("2");
@@ -22,30 +20,27 @@ public class Banco {
 
         Administrador admin = new Administrador();
         admin.setCedula("213443");
-        admin.setApellido("etesech");
-        admin.setNombre("no llego tilin");
+        admin.setApellido("Aguirre");
+        admin.setNombre("Brayan");
         admin.setCuentaAcceso(cuentaAcceso);
         listaAdmins.add(admin);
-
     }
-
     private void inicializar(){
         Cuenta cuenta = new Cuenta();
         cuenta.setNumeroCuenta("2");
-        cuenta.setTipoCuenta(Tipo_Cuenta.CUENTA_AHORROS);
+        cuenta.setTipoCuenta(Tipo_Cuenta.CuentaCorriente);
         cuenta.setSaldo(23);
 
         Cliente cliente = new Cliente();
-        cliente.setApellido("wasa");
+        cliente.setApellido("Garcia");
         cliente.setCedula("123");
         cliente.setCuenta(cuenta);
-        cliente.setNombre("tilin");
-        cliente.setDireccion("fada");
+        cliente.setNombre("Miguel");
+        cliente.setDireccion("Casa");
         cliente.setEmail("sdg");
         listaCuentas.add(cuenta);
         listaClientes.add(cliente);
     }
-
     public Banco(String nombre, String nit) {
         this.nombre = nombre;
         this.nit = nit;
@@ -53,55 +48,29 @@ public class Banco {
         this.listaCuentas = new ArrayList<>();
         this.listaAdmins = new ArrayList<>();
         inicializarAdmin();
+        inicializar();
     }
-
     public Banco() {
     }
-
-
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
-
     public ArrayList<Administrador> getListaAdmins() {
         return listaAdmins;
     }
-
     public void setListaAdmins(ArrayList<Administrador> listaAdmins) {
         this.listaAdmins = listaAdmins;
     }
-
     public ArrayList<Cliente> getlistaClientes() {
         return listaClientes;
     }
-
     public void setListaClientes(ArrayList<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
     }
-
     public ArrayList<Cuenta> getListaCuentas() {
         return listaCuentas;
     }
-
     public void setListaCuentas(ArrayList<Cuenta> listaCuentas) {
         this.listaCuentas = listaCuentas;
     }
-
     //Crud a Cliente
-
     public boolean crearCliente(String nombre, String apellido, String cedula, String direccion, String email, Cuenta cuenta) throws ClienteException {
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
@@ -116,8 +85,6 @@ public class Banco {
         getlistaClientes().add(cliente);
         return true;
     }
-
-
     private boolean existeCliente(String cedula) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getCedula().equals(cedula)) {
@@ -126,28 +93,26 @@ public class Banco {
         }
         return false;
     }
-
-    public boolean actualizarCliente(String nombre, String apellido, String cedula, String direccion, String email) {
+    public boolean actualizarCliente(String nombre, String apellido, String cedula, String direccion,String email, Cuenta cuenta) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getCedula().equals(cedula)) {
                 cliente.setNombre(nombre);
                 cliente.setApellido(apellido);
                 cliente.setDireccion(direccion);
                 cliente.setEmail(email);
+                cliente.setCuenta(cuenta);
                 return true;
             }
         }
         return false;
     }
-
     /**
-     * metodo para eliminar un producto
+     * metodo para eliminar un Cliente
      *
      * @param cedula
      * @return
      */
     public boolean eliminarCliente(String cedula) {
-
         if (existeCliente(cedula)) {
             for (Cliente cliente : listaClientes) {
                 if (cliente.getCedula().equals(cedula)) {
@@ -158,15 +123,14 @@ public class Banco {
         }
         return false;
     }
-
     /**
-     * metodo para buscar un producto
+     * metodo para buscar un Cliente
      *
      * @param cedula
      * @return
      * @throws ClienteException
      */
-    public Cliente buscarCliente(String cedula) throws ClienteException {
+    public Cliente  buscarCliente(String cedula) throws ClienteException {
         Cliente clienteEncontrado = null;
         if (existeCliente(cedula)) {
             for (Cliente cliente : getlistaClientes()) {
@@ -181,9 +145,7 @@ public class Banco {
         }
         return clienteEncontrado;
     }
-
     //CRUD de cuenta
-
     public boolean crearCuenta(String numeroCuenta, Double saldo, Tipo_Cuenta tipo_cuenta) throws CuentaException {
         Cuenta cuenta = new Cuenta();
         cuenta.setNumeroCuenta(numeroCuenta);
@@ -195,7 +157,6 @@ public class Banco {
         getListaCuentas().add(cuenta);
         return true;
     }
-
     private boolean existeCuenta(String numeroCuenta) {
         for (Cuenta cuenta : listaCuentas) {
             if (cuenta.getNumeroCuenta().equals(numeroCuenta)) {
@@ -204,17 +165,16 @@ public class Banco {
         }
         return false;
     }
-
-    public boolean actualizarCuenta(String numeroCuenta, Double saldo) throws CuentaException {
+    public boolean actualizarCuenta(Double saldo, String numeroCuenta ,Tipo_Cuenta tipocuenta) throws CuentaException {
         for (Cuenta cuenta : listaCuentas) {
-            if (cuenta.getNumeroCuenta().equals(numeroCuenta)) {
+            if (cuenta.getTipoCuenta().equals(numeroCuenta)) {
                 cuenta.setSaldo(saldo);
+                cuenta.setTipoCuenta(tipocuenta);
                 return true;
             }
         }
         return false;
     }
-
     public boolean eliminarCuenta(String numeroCuenta) throws CuentaException {
         if (existeCuenta(numeroCuenta)) {
             for (Cuenta cuenta : listaCuentas) {
@@ -226,7 +186,6 @@ public class Banco {
         }
         return false;
     }
-
     public Cuenta buscarCuenta(String numeroCuenta) throws CuentaException {
         Cuenta cuentaEncontrada = null;
         if (existeCuenta(numeroCuenta)) {
@@ -242,7 +201,6 @@ public class Banco {
         }
         return cuentaEncontrada;
     }
-
     public Boolean verificarLogin( String cedula, String numeroCuenta) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getCedula().equals(cedula)) {
@@ -251,7 +209,6 @@ public class Banco {
         }
         return false;
     }
-
     //CRUD Administrador
     public boolean crearAdmin(String nombre, String apellido , String cedula) throws AdminException {
         Administrador admin = new Administrador();
@@ -264,7 +221,6 @@ public class Banco {
         getListaAdmins().add(admin);
         return false;
     }
-
     private boolean existeAdmin(String cedula) {
         for (Administrador admin : listaAdmins) {
             if(admin.getCedula().equals(cedula))
@@ -282,14 +238,12 @@ public class Banco {
         }
         return administradorEncontrado;
     }
-
     public boolean crearCuentaAdmin(String user, String passWord){
         CuentaAcceso cuentaAcceso = new CuentaAcceso();
         cuentaAcceso.setUser(user);
         cuentaAcceso.setPassWord(passWord);
         return true;
     }
-
     public Boolean verificarLoginAdmin( String user, String passWord) {
         for (Administrador admin : listaAdmins) {
             if (admin.verificarCuentaAdmin(user,passWord)){
@@ -298,10 +252,6 @@ public class Banco {
         }
         return false;
     }
-
-
-
-
 }
 
 

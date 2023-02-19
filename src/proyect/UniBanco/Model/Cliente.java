@@ -1,13 +1,14 @@
 package proyect.UniBanco.Model;
 
-    public class Cliente {
+import proyect.UniBanco.Exceptions.ClienteException;
+
+public class Cliente {
 
         private String nombre;
         private String apellido;
         private String cedula;
         private String direccion;
         private String email;
-
         Cuenta cuenta;
         public Cliente(String nombre,String apellido, String cedula, String direccion, String email, Cuenta cuenta) {
             this.nombre = nombre;
@@ -18,11 +19,8 @@ package proyect.UniBanco.Model;
             this.cuenta=cuenta;
 
         }
-
         public Cliente() {
-
         }
-
         public Cuenta getCuenta() {
             return cuenta;
         }
@@ -67,7 +65,7 @@ package proyect.UniBanco.Model;
             return email;
         }
 
-        public void setEmail(String correo) {
+        public void setEmail(String email) {
             this.email = email;
         }
 

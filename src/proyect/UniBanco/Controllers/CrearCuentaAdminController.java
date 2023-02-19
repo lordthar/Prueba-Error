@@ -9,6 +9,7 @@ import proyect.UniBanco.Aplicacion.Main;
 import proyect.UniBanco.Exceptions.ClienteException;
 import proyect.UniBanco.Exceptions.CuentaException;
 import proyect.UniBanco.Exceptions.LoginException;
+import proyect.UniBanco.Model.Administrador;
 import proyect.UniBanco.Model.Cliente;
 import proyect.UniBanco.Model.Cuenta;
 import proyect.UniBanco.Model.Tipo_Cuenta;
@@ -17,25 +18,20 @@ import java.io.IOException;
 
 public class CrearCuentaAdminController {
 
-    ObservableList<Cliente>listaClientesData = FXCollections.observableArrayList();
+    Administrador administradorLoggeado= null;
+    Cliente clienteSeleccionado =null;
     @FXML
     private Button btnCrear;
-
     @FXML
-    private Button btnCerrarSesion;
-
+    private Button btnRegresar;
     @FXML
     private TextField txtApellidoCliente;
-
     @FXML
     private TextField txtCedula;
-
     @FXML
     private TextField txtDireccionCliente;
-
     @FXML
     private TextField txtEmailCliente;
-
     @FXML
     private TextField txtNombreCliente;
     @FXML
@@ -45,73 +41,19 @@ public class CrearCuentaAdminController {
     @FXML
     private TextField txtSaldo;
 
-    @FXML
-    private TableColumn<Cliente, String> columnApellido;
-
-    @FXML
-    private TableColumn<Cliente, String > columnCedula;
-
-    @FXML
-    private TableColumn<Cliente, String> columnNombre;
-
-    @FXML
-    private TableColumn<Cliente, Integer> columnNumeroCuenta;
-
-    @FXML
-    private TableColumn<Cuenta, Tipo_Cuenta> columnTipoCuenta;
-
-    @FXML
-    private TableView<Cliente> tableClienteCuenta;
-
     private Main main;
 
     @FXML
-    void cerrarSesion(ActionEvent event) throws IOException {
-        main.mostrarMainWindow();
+    void regresarAction(ActionEvent event) throws IOException {
+        main.mostrarMainAdmin(administradorLoggeado);
     }
-
     @FXML
     void crearCuenta(ActionEvent event) throws LoginException, ClienteException {
         crearCuentaAction();
     }
-
-    @FXML
-    void obtenerApellidoCliente(ActionEvent event) {
-
-    }
-
-    @FXML
-    void obtenerCedula(ActionEvent event) {
-
-    }
-
-    @FXML
-    void obtenerDireccion(ActionEvent event) {
-
-    }
-
-    @FXML
-    void obtenerEmail(ActionEvent event) {
-
-    }
-
-    @FXML
-    void obtenerNombreCliente(ActionEvent event) {
-
-    }
-    @FXML
-    void obtenerSaldo(ActionEvent event) {
-
-    }
-    @FXML
-    void obtenerNombreCuenta(ActionEvent event) {
-
-    }
-
     public void initialize(){
-        tipoCuentaBox.getItems().addAll(Tipo_Cuenta.CUENTA_AHORROS, Tipo_Cuenta.CUENTA_CORRIENTE);
+        tipoCuentaBox.getItems().addAll(Tipo_Cuenta.CuentaAhorro, Tipo_Cuenta.CuentaCorriente);
     }
-
     private void crearCuentaAction() throws ClienteException, LoginException {
         String nombre = txtNombreCliente.getText();
         String apellido = txtApellidoCliente.getText();
@@ -121,8 +63,7 @@ public class CrearCuentaAdminController {
         String  numeroCuenta =txtNombreCuenta.getText();
         String saldo = txtSaldo.getText();
         Tipo_Cuenta tipoCuenta= tipoCuentaBox.getValue();
-
-        if(verificarCampos(nombre,apellido,direccion, email, saldo, cedula, numeroCuenta, tipoCuenta) == true){
+        if(verificarCampos(nombre,apellido,direccion, email, saldo, cedula, numeroCuenta, tipoCuenta)){
             Cuenta cuenta;
             if(isnumeric(saldo)) {
                 double saldo1 = Double.parseDouble(txtSaldo.getText());
@@ -133,7 +74,6 @@ public class CrearCuentaAdminController {
                     limpiarDatos();
                     tipoCuentaBox.getSelectionModel().clearSelection();
                     mostrarMensaje("Notificacion Cliente", "Cliente registrado", "El cliente se ha registrado con exito", Alert.AlertType.INFORMATION);
-
                 } catch (ClienteException e){
                     mostrarMensaje("Notificacion Cliente", "El cliente no registrado", "El cliente con cedula "+cedula+" ya se encuentra registrado", Alert.AlertType.ERROR);
                 } catch (CuentaException e){
@@ -143,9 +83,7 @@ public class CrearCuentaAdminController {
                 mostrarMensaje("Notificacion Cliente", "No es valido su saldo", "Escriba su saldo con numeros solamente", Alert.AlertType.ERROR);
             }
         }
-
     }
-
     private void limpiarDatos() {
         txtNombreCliente.setText("");
         txtApellidoCliente.setText("");
@@ -155,7 +93,6 @@ public class CrearCuentaAdminController {
         txtNombreCuenta.setText("");
         txtSaldo.setText("");
     }
-
     private boolean verificarCampos(String nombre, String apellidos, String direccion, String email, String saldo, String cedula, String numeroCuenta, Tipo_Cuenta tipoCuenta) {
         if(nombre.equals("")){
             return false;
@@ -180,10 +117,8 @@ public class CrearCuentaAdminController {
         }
         return true;
     }
-
     private boolean isnumeric(String saldo) {
         boolean resultado;
-
         try {
             Double.parseDouble(saldo);
             resultado = true;
@@ -192,19 +127,17 @@ public class CrearCuentaAdminController {
         }
         return resultado;
     }
-
-
     public void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
-
         Alert alert = new Alert(alertType);
         alert.setTitle(titulo);
         alert.setHeaderText(header);
         alert.setContentText(contenido);
         alert.showAndWait();
     }
-
-    public void setMain(Main main) {
+    public void setMain(Main main, Administrador administrador) {
         this.main = main;
+        this.administradorLoggeado = administrador;
+
     }
 
 }

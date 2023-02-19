@@ -5,9 +5,7 @@ public class Administrador {
         private String nombre;
         private String apellido;
         private String cedula;
-
         CuentaAcceso cuentaAcceso;
-
     public Administrador(String nombre, String apellido, String cedula, CuentaAcceso cuentaAcceso) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -15,9 +13,7 @@ public class Administrador {
         this.cuentaAcceso= cuentaAcceso;
     }
     public Administrador (){
-
     }
-
     public String getNombre() {
         return nombre;
     }
@@ -45,7 +41,6 @@ public class Administrador {
     public CuentaAcceso getCuentaAcceso() {
         return cuentaAcceso;
     }
-
     public void setCuentaAcceso(CuentaAcceso cuentaAcceso) {
         this.cuentaAcceso = cuentaAcceso;
     }

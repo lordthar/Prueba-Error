@@ -12,16 +12,12 @@ public class LoginAdminController {
         private Main main;
         @FXML
         private Button btnLogIn;
-
         @FXML
         private Button btnRegresar;
-
         @FXML
         private PasswordField txtPassWord;
-
         @FXML
         private TextField txtUserName;
-
         @FXML
         void obtenerLogIn(ActionEvent event) {
                 IniciarSesionAdmin(event);
@@ -30,7 +26,6 @@ public class LoginAdminController {
         void RegresarAction(ActionEvent event) {
                 main.mostrarMainWindow();
         }
-
         private void IniciarSesionAdmin(ActionEvent event){
                 String user= "";
                 String passWord= "";
@@ -39,7 +34,7 @@ public class LoginAdminController {
                 if(verificarCampos(user,passWord)){
                         if(main.verificarCuentaAdmin(user,passWord)){
                                 Administrador admin = main.obtenerAdmin(user,passWord);
-                                main.crearcuentaAdmin(admin);
+                                main.mostrarMainAdmin(admin);
                         }else{
                                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                                 alert.setHeaderText("Datos incorrectos");
@@ -53,19 +48,15 @@ public class LoginAdminController {
                         alert.showAndWait();
                 }
         }
-
         private boolean verificarCampos(String user, String passWord) {
                 if(user.equals("")||passWord.equals("")){
                         return false;
                 }
                 return true;
-
         }
-
         public void setMain (Main main){
             this.main = main;
         }
-
     }
 
 

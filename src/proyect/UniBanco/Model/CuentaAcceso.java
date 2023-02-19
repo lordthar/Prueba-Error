@@ -9,22 +9,17 @@ public class CuentaAcceso {
         this.user = usuario;
         this.passWord = contraseña;
     }
-
     public CuentaAcceso() {
     }
-
     public String getUser() {
         return user;
     }
-
     public void setUser(String user) {
         this.user = user;
     }
-
     public String getPassWord() {
         return passWord;
     }
-
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }

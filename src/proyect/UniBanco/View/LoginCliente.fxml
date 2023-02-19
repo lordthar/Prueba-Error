@@ -8,8 +8,8 @@
 <AnchorPane prefHeight="400.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyect.UniBanco.Controllers.LoginClienteController">
    <children>
       <Label layoutX="133.0" layoutY="26.0" text="Iniciar Sesion Cliente" />
-      <TextField fx:id="txtCedula" layoutX="124.0" layoutY="78.0" onAction="#obtenerCedula" promptText="ingrese Cedula" />
-      <TextField fx:id="txtNumeroCuenta" layoutX="124.0" layoutY="140.0" onAction="#obtenerNumeroCuenta" promptText="Ingrese Cuenta ID" />
+      <TextField fx:id="txtCedula" layoutX="124.0" layoutY="78.0" promptText="ingrese Cedula" />
+      <TextField fx:id="txtNumeroCuenta" layoutX="124.0" layoutY="140.0" promptText="Ingrese Cuenta ID" />
       <Button fx:id="btnIniciarSesion" layoutX="145.0" layoutY="188.0" mnemonicParsing="false" onAction="#IniciarSesion" text="Iniciar Sesion" />
       <Label layoutX="48.0" layoutY="82.0" text="Cedula:" />
       <Label layoutX="10.0" layoutY="144.0" text="Numero De Cuenta:" />

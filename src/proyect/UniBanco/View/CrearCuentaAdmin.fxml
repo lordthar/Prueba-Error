@@ -26,11 +26,11 @@
       <Label layoutX="38.0" layoutY="183.0" text="Cedula:" />
       <Label layoutX="32.0" layoutY="223.0" text="Direccion:" />
       <Label layoutX="42.0" layoutY="259.0" text="Email:" />
-      <TextField fx:id="txtNombreCliente" layoutX="114.0" layoutY="106.0" onAction="#obtenerNombreCliente" />
-      <TextField fx:id="txtApellidoCliente" layoutX="114.0" layoutY="142.0" onAction="#obtenerApellidoCliente" />
-      <TextField fx:id="txtCedula" layoutX="114.0" layoutY="179.0" onAction="#obtenerCedula" />
-      <TextField fx:id="txtDireccionCliente" layoutX="114.0" layoutY="219.0" onAction="#obtenerDireccion" />
-      <TextField fx:id="txtEmailCliente" layoutX="114.0" layoutY="255.0" onAction="#obtenerEmail" />
+      <TextField fx:id="txtNombreCliente" layoutX="114.0" layoutY="106.0" />
+      <TextField fx:id="txtApellidoCliente" layoutX="114.0" layoutY="142.0" />
+      <TextField fx:id="txtCedula" layoutX="114.0" layoutY="179.0" />
+      <TextField fx:id="txtDireccionCliente" layoutX="114.0" layoutY="219.0" />
+      <TextField fx:id="txtEmailCliente" layoutX="114.0" layoutY="255.0" />
       <Label layoutX="491.0" layoutY="61.0" text="Datos De Cuenta">
          <font>
             <Font name="System Italic" size="15.0" />
@@ -39,9 +39,9 @@
       <Label layoutX="381.0" layoutY="119.0" text="Numero De cuenta:" />
       <Label layoutX="400.0" layoutY="223.0" text="Tipo Cuenta:" />
       <Label layoutX="417.0" layoutY="171.0" text="Saldo:" />
-      <TextField fx:id="txtNombreCuenta" layoutX="507.0" layoutY="119.0" onAction="#obtenerNombreCuenta" />
-      <TextField fx:id="txtSaldo" layoutX="507.0" layoutY="167.0" onAction="#obtenerSaldo" />
-      <Button fx:id="btnCerrarSesion" layoutX="184.0" layoutY="358.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
+      <TextField fx:id="txtNombreCuenta" layoutX="507.0" layoutY="119.0" />
+      <TextField fx:id="txtSaldo" layoutX="507.0" layoutY="167.0" />
+      <Button fx:id="btnRegresar" layoutX="184.0" layoutY="358.0" mnemonicParsing="false" onAction="#regresarAction" text="Regresar" />
       <Button fx:id="btnCrear" layoutX="378.0" layoutY="358.0" mnemonicParsing="false" onAction="#crearCuenta" text="Crear" />
       <ChoiceBox fx:id="tipoCuentaBox" layoutX="506.0" layoutY="219.0" prefWidth="150.0" />
    </children>
