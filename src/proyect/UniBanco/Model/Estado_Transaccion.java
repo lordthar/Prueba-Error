@@ -1,6 +1,6 @@
 package proyect.UniBanco.Model;
 
 public enum Estado_Transaccion {
-    EXITOSA, RECHAZA, SIN_FONDOS
+    EXITOSA, RECHAZADA, SIN_FONDOS
 }
 

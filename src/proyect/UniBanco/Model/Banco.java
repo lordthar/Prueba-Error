@@ -1,13 +1,17 @@
 package proyect.UniBanco.Model;
 
-import java.sql.Array;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
+import javafx.scene.control.DatePicker;
 import proyect.UniBanco.Exceptions.AdminException;
 import proyect.UniBanco.Exceptions.ClienteException;
 import proyect.UniBanco.Exceptions.CuentaException;
+import proyect.UniBanco.Exceptions.TransaccionException;
 
 public class Banco {
+    private Cliente cliente;
     private String nombre;
     private String nit;
     private ArrayList<Cliente> listaClientes;
@@ -31,6 +35,17 @@ public class Banco {
         cuenta.setTipoCuenta(Tipo_Cuenta.CuentaCorriente);
         cuenta.setSaldo(23);
 
+        Transaccion transaccion = new Transaccion();
+        DatePicker fecha1 = new DatePicker();
+        fecha1.setValue(LocalDate.of(2000, Month.JANUARY, 1));
+        LocalDate date = fecha1.getValue();
+        transaccion.setRegistroValor(34.0);
+        transaccion.setFecha(date);
+        transaccion.setHora("12:30");
+        transaccion.setEstado_transaccion(Estado_Transaccion.EXITOSA);
+        transaccion.setTipoTransaccion(Tipo_Transaccion.DEPOSITAR_DINERO);
+        cuenta.getListaTransacciones().add(transaccion);
+
         Cliente cliente = new Cliente();
         cliente.setApellido("Garcia");
         cliente.setCedula("123");
@@ -41,6 +56,7 @@ public class Banco {
         listaCuentas.add(cuenta);
         listaClientes.add(cliente);
     }
+
     public Banco(String nombre, String nit) {
         this.nombre = nombre;
         this.nit = nit;
@@ -248,6 +264,17 @@ public class Banco {
         for (Administrador admin : listaAdmins) {
             if (admin.verificarCuentaAdmin(user,passWord)){
                 return true;
+            }
+        }
+        return false;
+    }
+    public ArrayList<Transaccion>obtenerListaTransacciones(Cliente cliente){
+        return cliente.obtenerListaTransacciones();
+    }
+    public boolean crearTransaccion(LocalDate fecha, String hora, Double registroValor, Tipo_Transaccion tipoTransaccion, Estado_Transaccion estado_transaccion, String cedula) throws TransaccionException {
+        for(Cliente cliente : listaClientes){
+            if(cliente.getCedula().equals(cedula)){
+                return cliente.crearTransaccion(fecha, hora, registroValor, tipoTransaccion, estado_transaccion);
             }
         }
         return false;

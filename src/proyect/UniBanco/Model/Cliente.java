@@ -1,6 +1,10 @@
 package proyect.UniBanco.Model;
 
 import proyect.UniBanco.Exceptions.ClienteException;
+import proyect.UniBanco.Exceptions.TransaccionException;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Cliente {
 
@@ -73,9 +77,15 @@ public class Cliente {
             if(cuenta.getNumeroCuenta().equals(numeroCuenta)){
                 return true;
             }
-
             return false;
         }
+        public ArrayList<Transaccion>obtenerListaTransacciones(){
+            return cuenta.getListaTransacciones();
+        }
+        public boolean crearTransaccion(LocalDate fecha, String hora, Double registroValor, Tipo_Transaccion tipoTransaccion, Estado_Transaccion estado_transaccion) throws TransaccionException {
+            return cuenta.crearTransaccion(fecha, hora, registroValor, tipoTransaccion, estado_transaccion);
+        }
+
     }
 
 

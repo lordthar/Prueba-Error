@@ -17,15 +17,6 @@ public class MainAdminController {
     private Main main;
     Cliente clienteSeleccionado = null;
     ObservableList<Cliente> listaClienteData= FXCollections.observableArrayList();
-    @FXML
-    private Button btnActualizarCliente;
-    @FXML
-    private Button btnCerrarSesion;
-    @FXML
-    private Button btnCrearCliente;
-    @FXML
-    private Button btnEliminarCliente;
-    @FXML
     private Label labelBienvenidaAdmin;
     @FXML
     private TableColumn<Cliente, String> columnApellido;

@@ -8,8 +8,10 @@ import javafx.stage.Stage;
 import proyect.UniBanco.Controllers.*;
 import proyect.UniBanco.Exceptions.ClienteException;
 import proyect.UniBanco.Exceptions.CuentaException;
+import proyect.UniBanco.Exceptions.TransaccionException;
 import proyect.UniBanco.Model.*;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -135,6 +137,21 @@ public class Main extends Application {
             throw new RuntimeException(e);
         }
     }
+    public void TransaccionesCliente(Cliente cliente){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../View/TransaccionesCliente.fxml"));
+            AnchorPane rootLayout = loader.load();
+            Scene scene = new Scene(rootLayout);
+            TransaccionesClienteController controller = loader.getController();
+            controller.setMain(this,cliente);
+            stage.setScene(scene);
+            stage.setTitle("a wasar");
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public boolean verificarCuenta(String cedula, String numeroCuenta){
         return banco.verificarLogin(cedula,numeroCuenta);
     }
@@ -159,6 +176,9 @@ public class Main extends Application {
     public ArrayList<Cliente> obtenerCliente() {
         return banco.getlistaClientes();
     }
+    public ArrayList<Transaccion> obtenerListaTransaccion(Cliente cliente){
+        return banco.obtenerListaTransacciones(cliente);
+    }
     public boolean eliminarCliente(String cedula){
         return banco.eliminarCliente(cedula);
     }
@@ -171,4 +191,9 @@ public class Main extends Application {
     public boolean actualizarCliente(String nombre, String apellido, String cedula, String direccion, String email, Cuenta cuenta) {
         return banco.actualizarCliente(nombre, apellido, cedula, direccion, email, cuenta);
     }
+    public boolean crearTransaccion(LocalDate fecha, String hora, Double registroValor, Tipo_Transaccion tipoTransaccion, Estado_Transaccion estado_transaccion, String cedula) throws TransaccionException {
+        return banco.crearTransaccion(fecha, hora, registroValor, tipoTransaccion, estado_transaccion, cedula);
+    }
+
+
 }
